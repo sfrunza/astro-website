@@ -1,7 +1,9 @@
 {
+  "$schema": "node_modules/wrangler/config-schema.json",
   "name": "website-worker",
   "compatibility_date": "2025-09-05",
   "assets": {
     "directory": "./dist"
+    // "not_found_handling": "404-page"//todo add 404 page
   }
 }
