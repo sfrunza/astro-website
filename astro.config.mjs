@@ -11,16 +11,7 @@ export default defineConfig({
   site: 'http://localhost:4321',
   output: 'static',
   integrations: [react(), mdx({ optimize: true }), sitemap()],
-  adapter: cloudflare({
-    imageService: 'cloudflare',
-    platformProxy: {
-      enabled: true,
-      configPath: 'wrangler.json',
-      persist: {
-        path: './.cache/wrangler/v3',
-      },
-    },
-  }),
+  adapter: cloudflare(),
   vite: {
     plugins: [tailwindcss()],
     optimizeDeps: {
@@ -46,9 +37,7 @@ export default defineConfig({
     },
   },
   build: {
-    // Enable modern browser builds for better performance
-    // format: 'file',
-    // inlineStylesheets: 'auto',
+    format: 'file',
   },
   server: {
     headers: {
