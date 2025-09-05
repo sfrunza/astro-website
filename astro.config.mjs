@@ -47,8 +47,8 @@ export default defineConfig({
   },
   build: {
     // Enable modern browser builds for better performance
-    format: 'file',
-    inlineStylesheets: 'auto',
+    // format: 'file',
+    // inlineStylesheets: 'auto',
   },
   server: {
     headers: {
