@@ -1,0 +1,80 @@
+---
+import { Image } from 'astro:assets';
+import { Button } from '@/components/ui/button';
+import heroImage from '../assets/truck-and-house-opt.jpg';
+
+const altText = 'Making Your Move Stress-Free';
+---
+
+<section
+  class="relative -mt-27 isolate min-h-[92vh] overflow-hidden pt-50 pb-30"
+>
+  <!-- Optimized Background Image using astro:image -->
+  <div class="absolute inset-0 -z-10">
+    <Image
+      src={heroImage}
+      alt="Hero Background"
+      widths={[480, 768, 1024, 1200, 1600, 1920]}
+      sizes="(max-width: 768px) 100vw, 1920px"
+      loading="eager"
+      format="webp"
+      class="block w-full h-full object-cover"
+      priority
+      quality={10}
+      title="Phoenix Moving truck loading furniture"
+    />
+    <div
+      class="absolute inset-0 bg-gradient-to-b from-black/40 to-black/30 mix-blend-multiply p-7"
+    >
+    </div>
+  </div>
+
+  <!-- Hero Content -->
+  <div class="px-4 max-w-7xl mx-auto text-white">
+    <h1
+      class="text-4xl md:text-6xl font-bold leading-tight tracking-tighter mb-4 text-pretty"
+    >
+      {altText}
+    </h1>
+    <p class="text-lg md:text-xl mb-6 text-pretty">
+      Stress-free local and long-distance moving services tailored to your
+      needs.
+    </p>
+    <Button variant="secondary" size="lg"> Get a Free Quote </Button>
+
+    <div
+      class="mt-20 flex items-stretch flex-wrap lg:flex-nowrap gap-8 justify-center lg:justify-between"
+    >
+      <div
+        class="bg-neutral-400/50 backdrop-blur-xs p-8 space-y-4 rounded-2xl w-full md:max-w-sm text-white"
+      >
+        <p
+          class="text-3xl sm:text-4xl uppercase font-bold text-pretty tracking-tighter"
+        >
+          <span class="text-secondary font-bold">15 years</span> of experience
+        </p>
+        <p>in the moving industryrisus tristique posuere.</p>
+      </div>
+      <div
+        class="bg-neutral-400/50 backdrop-blur-xs p-8 space-y-4 rounded-2xl w-full md:max-w-sm text-white"
+      >
+        <p
+          class="text-3xl sm:text-4xl uppercase font-bold text-pretty tracking-tighter"
+        >
+          <span class="text-secondary font-bold">95%</span> of our clients
+        </p>
+        <p>rate our services as excellent.</p>
+      </div>
+      <div
+        class="bg-neutral-400/50 backdrop-blur-xs p-8 space-y-4 rounded-2xl w-full md:max-w-sm text-white"
+      >
+        <p
+          class="text-3xl sm:text-4xl uppercase font-bold text-pretty tracking-tighter"
+        >
+          <span class="text-secondary font-bold">99%</span> of our projects
+        </p>
+        <p>are completed on schedule.</p>
+      </div>
+    </div>
+  </div>
+</section>

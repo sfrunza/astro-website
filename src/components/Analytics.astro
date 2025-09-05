@@ -1,0 +1,135 @@
+---
+import { SITE } from '@/config/site';
+
+export interface AnalyticsProps {
+  googleAnalyticsId?: string;
+  googleTagManagerId?: string;
+  facebookPixelId?: string;
+  hotjarId?: string;
+  enableTracking?: boolean;
+}
+
+const {
+  googleAnalyticsId = SITE.googleAnalyticsId,
+  googleTagManagerId = SITE.googleTagManagerId,
+  facebookPixelId,
+  hotjarId,
+  enableTracking = true,
+} = Astro.props;
+---
+
+{enableTracking && (
+  <>
+    <!-- Google Analytics 4 -->
+    {googleAnalyticsId && googleAnalyticsId !== "G-XXXXXXXXXX" && (
+      <>
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`}></script>
+        <script is:inline>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '{googleAnalyticsId}', {
+            page_title: document.title,
+            page_location: window.location.href,
+          });
+        </script>
+      </>
+    )}
+
+    <!-- Google Tag Manager -->
+    {googleTagManagerId && googleTagManagerId !== "GTM-XXXXXXX" && (
+      <script is:inline>
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','{googleTagManagerId}');
+      </script>
+    )}
+
+    <!-- Facebook Pixel -->
+    {facebookPixelId && (
+      <script is:inline>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '{facebookPixelId}');
+        fbq('track', 'PageView');
+      </script>
+    )}
+
+    <!-- Hotjar -->
+    {hotjarId && (
+      <script is:inline>
+        (function(h,o,t,j,a,r){
+            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+            h._hjSettings={hjid:{hotjarId},hjsv:6};
+            a=o.getElementsByTagName('head')[0];
+            r=o.createElement('script');r.async=1;
+            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+      </script>
+    )}
+
+    <!-- Custom Analytics Events -->
+    <script is:inline>
+      // Track page views
+      document.addEventListener('DOMContentLoaded', function() {
+        // Track form submissions
+        const forms = document.querySelectorAll('form');
+        forms.forEach(form => {
+          form.addEventListener('submit', function() {
+            if (typeof gtag !== 'undefined') {
+              gtag('event', 'form_submit', {
+                'form_name': form.getAttribute('data-form-name') || 'contact_form'
+              });
+            }
+          });
+        });
+
+        // Track phone number clicks
+        const phoneLinks = document.querySelectorAll('a[href^="tel:"]');
+        phoneLinks.forEach(link => {
+          link.addEventListener('click', function() {
+            if (typeof gtag !== 'undefined') {
+              gtag('event', 'phone_click', {
+                'phone_number': link.getAttribute('href').replace('tel:', '')
+              });
+            }
+          });
+        });
+
+        // Track email clicks
+        const emailLinks = document.querySelectorAll('a[href^="mailto:"]');
+        emailLinks.forEach(link => {
+          link.addEventListener('click', function() {
+            if (typeof gtag !== 'undefined') {
+              gtag('event', 'email_click', {
+                'email_address': link.getAttribute('href').replace('mailto:', '')
+              });
+            }
+          });
+        });
+
+        // Track CTA button clicks
+        const ctaButtons = document.querySelectorAll('[data-cta]');
+        ctaButtons.forEach(button => {
+          button.addEventListener('click', function() {
+            if (typeof gtag !== 'undefined') {
+              gtag('event', 'cta_click', {
+                'cta_name': button.getAttribute('data-cta'),
+                'cta_text': button.textContent.trim()
+              });
+            }
+          });
+        });
+      });
+    </script>
+  </>
+)} 

@@ -1,0 +1,138 @@
+---
+import MainLayout from '@/layouts/MainLayout.astro';
+import { SITE } from '@/config/site';
+import JsonLd from '@/components/JsonLd.astro';
+import Hero from '@/components/Hero.astro';
+
+// Page-specific SEO data
+const pageTitle = `Book a Move - ${SITE.businessName}`;
+const pageDescription = `Book a move with ${SITE.businessName}. Get a free quote today!`;
+const pageKeywords =
+  'moving services, professional movers, residential moving, commercial moving, packing services, storage solutions, free quote, pricing, phoenix moving';
+
+// Structured data for this page
+const pageStructuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: pageTitle,
+  description: pageDescription,
+  url: SITE.url,
+  mainEntity: {
+    '@type': 'MovingCompany',
+    name: SITE.businessName,
+    description: SITE.description,
+    url: SITE.url,
+    telephone: SITE.contactPhone,
+    email: SITE.contactEmail,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: '123 Main St',
+      addressLocality: 'City',
+      addressRegion: 'State',
+      postalCode: '12345',
+      addressCountry: 'US',
+    },
+    openingHours: SITE.businessHours,
+    priceRange: '$$',
+    serviceArea: {
+      '@type': 'GeoCircle',
+      geoMidpoint: {
+        '@type': 'GeoCoordinates',
+        latitude: 40.7128,
+        longitude: -74.006,
+      },
+      geoRadius: '50000',
+    },
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Moving Services',
+      itemListElement: [
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Residential Moving',
+            description: 'Professional residential moving services',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Commercial Moving',
+            description: 'Professional commercial moving services',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Packing Services',
+            description: 'Professional packing and unpacking services',
+          },
+        },
+      ],
+    },
+  },
+};
+---
+
+<MainLayout
+  title={pageTitle}
+  description={pageDescription}
+  keywords={pageKeywords}
+  structuredData={pageStructuredData}
+  enableAnalytics={true}
+>
+  <main class="bg-muted -mt-27 min-h-screen">
+    <section class="container mx-auto pt-48">
+      <h1 class="text-4xl font-bold mb-4">Professional Moving Services</h1>
+      <p class="text-xl mb-8">
+        Experience stress-free moves with our professional team
+      </p>
+
+      <!-- CTA Button with analytics tracking -->
+      <button
+        class="bg-blue-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors"
+        data-cta="get_quote"
+      >
+        Get Free Quote
+      </button>
+    </section>
+
+    <section class="grid md:grid-cols-3 gap-8 mb-12">
+      <div class="text-center">
+        <h2 class="text-2xl font-semibold mb-4">Residential Moving</h2>
+        <p>Professional residential moving services tailored to your needs.</p>
+      </div>
+      <div class="text-center">
+        <h2 class="text-2xl font-semibold mb-4">Commercial Moving</h2>
+        <p>
+          Efficient commercial moving solutions for businesses of all sizes.
+        </p>
+      </div>
+      <div class="text-center">
+        <h2 class="text-2xl font-semibold mb-4">Packing Services</h2>
+        <p>Expert packing and unpacking services to protect your belongings.</p>
+      </div>
+    </section>
+
+    <section class="text-center">
+      <h2 class="text-3xl font-bold mb-6">Contact Us</h2>
+      <div class="flex flex-col md:flex-row justify-center gap-6">
+        <a
+          href="tel:+1-555-123-4567"
+          class="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors"
+        >
+          Call Now: (555) 123-4567
+        </a>
+        <a
+          href="mailto:info@phoenixmoving.com"
+          class="bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors"
+        >
+          Email Us
+        </a>
+      </div>
+    </section>
+  </main>
+</MainLayout>

@@ -1,0 +1,135 @@
+---
+---
+import { SITE } from '@/config/site';
+import LegalLayout from '@/layouts/LegalLayout.astro';
+
+<LegalLayout
+  title={`Privacy Policy - ${SITE.businessName}`}
+  description="Privacy Policy for Phoenix Moving"
+  url={`${SITE.url}/privacy`}
+>
+
+# Privacy Policy
+
+Last updated: {new Date().toLocaleDateString()}
+
+{SITE.businessName} ("Company", "we", "our", or "us") values your privacy. This Privacy Policy describes how we collect, use, and protect your information when you visit our website, contact us, or use our services.
+
+By accessing or using our website ("Site"), submitting your personal data, or opting into SMS communications, you agree to the terms of this Privacy Policy. If you do not agree, please do not use our Site.
+
+## 1. Information We Collect
+
+We collect personal and non-personal information through various means, including when you visit our website, fill out forms, contact us, or use our services.
+
+### A. Personal Information You Provide
+
+- Name, email address, phone number, mailing address.
+- Moving service details, requested estimates, or preferences.
+- Payment details processed securely via third-party services, never stored on our servers.
+- Communications and inquiries via email, phone, or chat support.
+
+### B. Automatically Collected Information
+
+When you visit our Site, we may collect:
+
+- **Device Information** including IP address, browser type, and operating system.
+- **Website Usage Data** such as page views, time spent, and referring websites.
+- **Cookies and Tracking Technologies** used for analytics, improving user experience, and site functionality.
+
+### C. Call and SMS Data
+
+- **Phone Calls** may be recorded for quality assurance and training purposes.
+- **SMS Communications** will only be used for service-related messages if you opt-in.
+
+## 2. How We Use Your Information
+
+We collect and use information for the following purposes:
+
+- **Service Delivery and Customer Support** including processing moving service requests, providing estimates, and answering inquiries.
+- **Site and Service Improvements** such as analyzing website traffic, troubleshooting issues, and optimizing performance.
+- **Marketing and Promotions** with consent, including sending service updates, promotions, or offers, with the option to opt out anytime.
+- **Security and Fraud Prevention** by monitoring for unauthorized access, preventing fraud, and protecting company assets.
+- **Legal and Compliance** to comply with legal obligations, respond to law enforcement requests, and enforce company policies.
+
+## 3. How We Share Your Information
+
+We do not sell, rent, or trade your personal information. We only share data in these cases:
+
+- **Service Providers and Third Parties**, including payment processors, customer support tools, and analytics providers.
+- **Legal Compliance and Protection** if required by law or to protect our rights, property, or safety.
+- **Business Transfers** in the event {SITE.businessName} is merged, sold, or acquired, customer information may be transferred.
+
+We do not share phone numbers collected for SMS consent with any third parties for marketing purposes. SMS consent cannot be transferred or disclosed to another company per The Campaign Registry guidelines.
+
+## 4. Cookies and Tracking Technologies
+
+We use cookies and similar tracking technologies to enhance user experience, analyze website traffic, and remember user preferences.
+
+You can disable cookies in your browser settings, but doing so may limit access to certain Site features.
+
+## 5. Your Rights and Choices
+
+Depending on your location, you may have the following rights regarding your personal data:
+
+- **Access and Correction** to request a copy of your data or correct inaccurate information.
+- **Deletion Request** to ask us to delete your data unless required by law to retain it.
+- **Opt-Out of Marketing** to unsubscribe from marketing emails or SMS messages anytime.
+- **Restrict Data Processing** to request limits on how we use your data in some cases.
+
+To exercise these rights, contact us at <a href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a> 
+
+**Response Time:** We will respond within 30 days of receiving your request.
+
+## 6. Data Security and Protection Measures
+
+We take industry-standard precautions to protect your personal data:
+
+- **Encryption** to secure data transmission using SSL or TLS encryption.
+- **Access Controls** with limited access to customer data within the company.
+- **Regular Audits** including routine security assessments to prevent breaches.
+
+No method of transmission over the internet is 100 percent secure. While we take every precaution, we cannot guarantee absolute security.
+
+## 7. SMS Communications and Consent
+
+### SMS Opt-In Policy
+
+By opting into SMS messages, you consent to receive service-related text messages from {SITE.businessName}.
+
+**Important:**
+
+- The disclaimer applies only to SMS and not emails or calls.
+- Users must actively check the box to opt in.
+- We do not sell or share phone numbers collected for SMS marketing.
+
+### How to Opt Out:
+
+- Reply STOP to any SMS message to unsubscribe.
+- Contact us at <a href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a>  to remove your number.
+- We do not sell or share phone numbers collected for SMS marketing.
+
+No method of transmission over the internet is 100 percent secure. While we take every precaution, we cannot guarantee absolute security.
+
+## 8. Children's Privacy
+
+{SITE.businessName} does not knowingly collect personal data from children under 13 years old. If we discover that a child has provided us with personal data, we will delete it immediately.
+
+## 9. Modifications to This Privacy Policy
+
+We may update this Privacy Policy from time to time. The most current version will always be available on our website.
+
+If we make material changes, we will notify you via email or a site notice before the changes take effect.
+
+By continuing to use our Site after updates are posted, you agree to the revised Privacy Policy.
+
+## 10. Contact Us
+
+For any privacy-related inquiries, please contact us:
+
+**{SITE.businessName}**
+
+**Email:** <a href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a> 
+
+**Phone:** <a href={`tel:${SITE.contactPhone}`}>{SITE.contactPhone}</a> 
+
+</LegalLayout>

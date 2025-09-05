@@ -1,0 +1,10 @@
+---
+export interface JsonLdProps {
+  data: object;
+  type?: 'application/ld+json' | 'application/json';
+}
+
+const { data, type = 'application/ld+json' } = Astro.props;
+---
+
+<script type={type} set:html={JSON.stringify(data)} />

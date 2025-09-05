@@ -1,0 +1,5 @@
+/drafts/*
+  X-Robots-Tag: noindex, nofollow
+
+/private/*
+  X-Robots-Tag: noindex

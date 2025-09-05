@@ -1,0 +1,68 @@
+---
+import { SITE } from '@/config/site';
+import Logo from './Logo.astro';
+import { buttonVariants } from './ui/button';
+import { MenuIcon, PhoneIcon } from 'lucide-react';
+import { cn } from '@/lib/utils';
+
+const currentPathname = Astro.url.pathname.replace(/\/$/, '');
+
+const navItems = [
+  { label: 'Home', href: '/' },
+  { label: 'Services', href: '/services' },
+  { label: 'Pricing', href: '/pricing' },
+  { label: 'FAQ', href: '/faq' },
+];
+---
+
+<header class="w-full lg:px-4 sticky top-0 lg:top-2.5 z-50">
+  <div
+    class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:my-5 md:px-8 h-17 shadow bg-background rounded-b-2xl lg:rounded-2xl"
+  >
+    <div class="flex justify-between items-center h-full">
+      <a
+        href="/"
+        title="Phoenix Moving & Storage Logo"
+        aria-label="Phoenix Moving & Storage Home Page"
+      >
+        <Logo class="w-30" />
+      </a>
+      <nav
+        class="lg:flex-1 hidden lg:flex space-x-6 sm:justify-start lg:justify-center ml-10 text-right items-center gap-4"
+      >
+        {
+          navItems.map((item) => (
+            <a
+              href={item.href}
+              class={cn(
+                'font-medium',
+                currentPathname === item.href && 'text-primary'
+              )}
+            >
+              {item.label}
+            </a>
+          ))
+        }
+        <a
+          href={`tel:${SITE.contactPhone}`}
+          class={buttonVariants({ variant: 'outline' })}
+        >
+          <PhoneIcon />
+          {SITE.contactPhone}
+        </a>
+      </nav>
+      <div
+        class="flex-1 flex justify-end items-center lg:flex-none text-right gap-2"
+      >
+        <a href="/" class={buttonVariants({ variant: 'ghost' })}>Client Login</a
+        >
+        <a href="/book" class={buttonVariants({ variant: 'secondary' })}
+          >Get a Quote</a
+        >
+        <div class="lg:hidden ml-2">
+          <MenuIcon className="w-6 h-6" />
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
