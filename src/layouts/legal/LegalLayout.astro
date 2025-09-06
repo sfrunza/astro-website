@@ -1,0 +1,45 @@
+---
+import '@/styles/globals.css';
+import SEOHead from '@/components/SEOHead.astro';
+import Logo from '@/components/Logo.astro';
+import { cn } from '@/lib/utils';
+import Footer from '@/components/Footer.astro';
+import Header from './Header.astro';
+
+// const currentPathname = Astro.url.pathname.replace(/\/$/, '');
+
+const { title, description, url, href } = Astro.props;
+const pathname = Astro.url.pathname.replace(import.meta.env.BASE_URL, '');
+const subpath = pathname.match(/[^\/]+/g);
+const isActive = href === pathname || href === '/' + (subpath?.[0] || '');
+
+console.log('isActive', isActive);
+console.log('href', href);
+console.log('pathname', pathname);
+console.log('subpath', subpath);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <SEOHead title={title} description={description} url={url} />
+  </head>
+  <body class="bg-muted/50">
+    <Header />
+    <main
+      class="prose prose-a:text-blue-600 mx-auto max-w-5xl border-x border-dashed px-4 py-10"
+    >
+      <div class="mb-8">
+        <a
+          href="/"
+          aria-label="Brave Movers Home"
+          class="text-muted-foreground hover:text-foreground flex items-center text-sm transition-colors"
+        >
+          &larr; Back to Home
+        </a>
+      </div>
+      <slot />
+    </main>
+    <Footer className="border-t" />
+  </body>
+</html>

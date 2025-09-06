@@ -11,7 +11,12 @@ export default defineConfig({
   site: 'http://localhost:4321',
   output: 'static',
   integrations: [react(), mdx({ optimize: true }), sitemap()],
-  adapter: cloudflare(),
+  adapter: cloudflare({
+    platformProxy: {
+      enabled: true,
+    },
+    imageService: 'compile',
+  }),
   vite: {
     plugins: [tailwindcss()],
     optimizeDeps: {
@@ -35,9 +40,6 @@ export default defineConfig({
           }
         : undefined,
     },
-  },
-  build: {
-    format: 'file',
   },
   server: {
     headers: {

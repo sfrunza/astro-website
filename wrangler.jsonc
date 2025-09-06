@@ -1,8 +1,0 @@
-{
-  "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "astro-website",
-  "compatibility_date": "2025-09-05",
-  "assets": {
-    "directory": "./dist"
-  }
-}

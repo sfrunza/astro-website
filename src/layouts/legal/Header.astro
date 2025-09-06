@@ -1,0 +1,25 @@
+---
+import Logo from '@/components/Logo.astro';
+import HeaderLink from './HeaderLink.astro';
+import { SITE } from '@/config/site';
+---
+
+<header>
+  <nav class="bg-background shadow sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        {/* Logo */}
+        <a href="/" class="h-2/3" aria-label="Phoenix Moving">
+          <Logo class="h-full" />
+        </a>
+
+        {/* Navigation */}
+        <div class="flex items-center gap-3">
+          <HeaderLink href="/company-policy">Policy</HeaderLink>
+          <HeaderLink href="/privacy">Privacy</HeaderLink>
+          <HeaderLink href="/terms">Terms</HeaderLink>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
